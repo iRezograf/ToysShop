@@ -16,15 +16,6 @@ public class ToysShop implements Comparable<ToysShop>{
     }
 
     @Override
-    public String toString() {
-        return "Toy{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", chance=" + chance +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -65,6 +56,15 @@ public class ToysShop implements Comparable<ToysShop>{
     public int compareTo(ToysShop other) {
 //        return Integer.valueOf(other.getId()) - Integer.valueOf(this.getId());
         return other.getChance() - this.getChance();
+    }
+
+    @Override
+    public String toString() {
+        return "ToysShop{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", chance=" + chance +
+                '}';
     }
 
 
