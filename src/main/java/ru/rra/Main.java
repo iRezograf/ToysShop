@@ -21,8 +21,10 @@ public class Main {
 
         getToysFromPriorityQueue(pQ);
 
-        System.out.println("------ Используется паблик класс Comparator ----------");
-        PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, new ToysComparator());
+        System.out.println("------ Используется паблик класс Comparator или Lambda ----------");
+        PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, (t1,t2)-> t2.getChance()-t1.getChance());
+//        PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, (t1,t2)-> Integer.valueOf(t2.getId())-Integer.valueOf(t1.getId()));
+//        PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, new ToysComparator());
         priorityQueue.addAll(list);
 
         getToysFromPriorityQueue(priorityQueue);
