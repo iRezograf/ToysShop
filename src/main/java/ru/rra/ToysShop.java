@@ -54,8 +54,9 @@ public class ToysShop implements Comparable<ToysShop>{
 
     @Override
     public int compareTo(ToysShop other) {
+        return Integer.valueOf(this.getId()) - Integer.valueOf(other.getId());
 //        return Integer.valueOf(other.getId()) - Integer.valueOf(this.getId());
-        return other.getChance() - this.getChance();
+//        return other.getChance() - this.getChance();
     }
 
     @Override

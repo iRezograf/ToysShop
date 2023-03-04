@@ -11,15 +11,22 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, new ToysComparator());
 
         Gson gson = new Gson();
         Type founderListType = new TypeToken<ArrayList<ToysShop>>(){}.getType();
         List<ToysShop> list = gson.fromJson(readToysFormJsonFile(), founderListType);
+
+        System.out.println("------  используется override compareTo in class ToysShop implements Compareble------");
         PriorityQueue<ToysShop> pQ = new PriorityQueue<>(list);
 
-
         getToysFromPriorityQueue(pQ);
+
+        System.out.println("------ Используется паблик класс Comparator ----------");
+        PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, new ToysComparator());
+        priorityQueue.addAll(list);
+
+        getToysFromPriorityQueue(priorityQueue);
+
     }
 
 
