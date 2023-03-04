@@ -2,8 +2,10 @@ package ru.rra;
 
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.*;
 
 public class Main {
@@ -12,13 +14,12 @@ public class Main {
         PriorityQueue<ToysShop> priorityQueue = new PriorityQueue<>(10, new ToysComparator());
 
         Gson gson = new Gson();
-        ToysShop[] toysShops = gson.fromJson(readToysFormJsonFile(), ToysShop[].class);
+        Type founderListType = new TypeToken<ArrayList<ToysShop>>(){}.getType();
+        List<ToysShop> list = gson.fromJson(readToysFormJsonFile(), founderListType);
+        PriorityQueue<ToysShop> pQ = new PriorityQueue<>(list);
 
-        for (int i = 0; i < toysShops.length; i++) {
-            priorityQueue.add(toysShops[i]);
-        }
 
-        getToysFromPriorityQueue(priorityQueue);
+        getToysFromPriorityQueue(pQ);
     }
 
 
